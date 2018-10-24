@@ -35,3 +35,21 @@ body {
         display: none;
     }
 }
+
+.navbar-default {
+    background-color: #337ab7;
+    border: none;
+    color: whitesmoke;
+}
+
+.navbar-default .navbar-brand{
+    color: whitesmoke;
+}
+
+.navbar-default .navbar-text{
+    color: whitesmoke;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: whitesmoke;
+}
