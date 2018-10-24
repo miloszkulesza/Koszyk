@@ -23,6 +23,19 @@ namespace Koszyk.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> dodajProdukt([Bind("id,nazwa,cenaNetto,nazwaProducenta,adresProducenta,ilosc")] Produkt produkt)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Add(produkt);
+                await db.SaveChangesAsync();
+                return RedirectToAction(nameof(produkty));
+            }
+            return View(produkt);
+        }
+
         public IActionResult zarzadzanie()
         {
             return View();

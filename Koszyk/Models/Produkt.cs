@@ -14,8 +14,8 @@ namespace Koszyk.Models
         [Required(ErrorMessage = "Podaj nazwe produktu")]
         public string nazwa { get; set; }
         [Required(ErrorMessage = "Podaj cenę produktu")]
-        [RegularExpression(@"^\d+\.\d{0,2}$", ErrorMessage = "Niewłaściwy format ceny")]
         [Range(0, 99999.99, ErrorMessage = "Cena musi mieścić sie w zakresie 0 - 99999.99")]
+        [MinLength(1, ErrorMessage = "Podana wartość jest nieprawidłowa")]
         public decimal cenaNetto { get; set; }
         public decimal cenaBrutto()
         { 
@@ -25,5 +25,8 @@ namespace Koszyk.Models
         public string nazwaProducenta { get; set; }
         [Required(ErrorMessage = "Podaj adres producenta produktu")]
         public string adresProducenta { get; set; }
+        [Required(ErrorMessage = "Podaj ilość sztuk")]
+        [RegularExpression(@"^\d$", ErrorMessage = "Podaj właściwą ilość sztuk")]
+        public int ilosc { get; set; }
     }
 }

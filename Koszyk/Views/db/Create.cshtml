@@ -10,12 +10,12 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" class="">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="nazwa" class="control-label"></label>
-                <input asp-for="nazwa" class="form-control" />
-                <span asp-validation-for="nazwa" class="text-danger"></span>
+                <input asp-for="nazwa" class="form-control is-valid" />
+                <span asp-validation-for="nazwa" class="valid-feedback"></span>
             </div>
             <div class="form-group">
                 <label asp-for="cenaNetto" class="control-label"></label>

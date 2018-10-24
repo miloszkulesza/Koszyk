@@ -3,26 +3,48 @@
     ViewData["Title"] = "Dodaj produkt";
 }
 
-<div class="row">
-    <div class="page-header">
-        <h1>Koszyk <small>@ViewBag.Title</small></h1>
-    </div>
-    <div class="col-xs-4">
-        <form class="form" asp-controller="Produkt" asp-action="dodajProdukt" method="post">
-            <div class="form-group">
-                <label>Nazwa produktu</label>
-                <input type="text" class="form-control" asp-for="nazwa" />
-                <label>Cena</label>
-                <input type="text" class="form-control" asp-for="cenaNetto" />
-                <label>Producent</label>
-                <input type="text" class="form-control" asp-for="nazwaProducenta" />
-                <label>Adres producenta</label>
-                <input type="text" class="form-control" asp-for="adresProducenta" />
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-success">Dodaj</button> <button type="reset" class="btn btn-danger">Wyczyść</button>
-            </div>
-        </form>
+<div class="page-header">
+    <h1>Koszyk <small>@ViewBag.Title</small></h1>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4">
+            <form class="form" asp-controller="Produkt" asp-action="dodajProdukt" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group has-feedback">
+                    <label asp-for="nazwa" class="control-label">Nazwa produktu</label>
+                    <input type="text" class="form-control" asp-for="nazwa" />
+                    <span asp-validation-for="nazwa" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Cena</label>
+                    <input type="text" class="form-control" asp-for="cenaNetto" />
+                    <span asp-validation-for="cenaNetto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Producent</label>
+                    <input type="text" class="form-control" asp-for="nazwaProducenta" />
+                    <span asp-validation-for="nazwaProducenta" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Adres producenta</label>
+                    <input type="text" class="form-control" asp-for="adresProducenta" />
+                    <span asp-validation-for="adresProducenta" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Zdjęcie produktu</label>
+                    <input type="file" />
+                </div>
+                <div class="form-group">
+                    <label>Ilość</label>
+                    <input type="number" class="form-control" asp-for="ilosc" />
+                    <span asp-validation-for="ilosc" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Dodaj</button> <button type="reset" class="btn btn-danger">Wyczyść</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
