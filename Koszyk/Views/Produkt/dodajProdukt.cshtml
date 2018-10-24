@@ -1,0 +1,28 @@
+﻿@model Koszyk.Models.Produkt;
+@{
+    ViewData["Title"] = "Dodaj produkt";
+}
+
+<div class="row">
+    <div class="page-header">
+        <h1>Koszyk <small>@ViewBag.Title</small></h1>
+    </div>
+    <div class="col-xs-4">
+        <form class="form" asp-controller="Produkt" asp-action="dodajProdukt" method="post">
+            <div class="form-group">
+                <label>Nazwa produktu</label>
+                <input type="text" class="form-control" asp-for="nazwa" />
+                <label>Cena</label>
+                <input type="text" class="form-control" asp-for="cenaNetto" />
+                <label>Producent</label>
+                <input type="text" class="form-control" asp-for="nazwaProducenta" />
+                <label>Adres producenta</label>
+                <input type="text" class="form-control" asp-for="adresProducenta" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Dodaj</button> <button type="reset" class="btn btn-danger">Wyczyść</button>
+            </div>
+        </form>
+    </div>
+</div>
+
