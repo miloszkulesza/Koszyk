@@ -1,6 +1,6 @@
 ﻿@model Koszyk.Models.Produkt;
 @{
-    ViewData["Title"] = "Dodaj produkt";
+    ViewData["Title"] = "Edytuj produkt";
 }
 
 <div class="page-header">
@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-4">
-            <form class="form" asp-controller="Produkt" asp-action="dodajProdukt" method="post">
+            <form class="form" asp-controller="Produkt" asp-action="edytuj" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group has-feedback">
                     <label asp-for="nazwa" class="control-label">Nazwa produktu</label>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="form-group">
                     <label>URL zdjęcia</label>
-                    <input type="url" asp-for="urlZdjecia" required/>
+                    <input type="url" asp-for="urlZdjecia" required />
                 </div>
                 <div class="form-group">
                     <label>Ilość</label>
@@ -41,7 +41,7 @@
                     <span asp-validation-for="ilosc" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success">Dodaj</button> <button type="reset" class="btn btn-danger">Wyczyść</button>
+                    <button type="submit" class="btn btn-success">Zatwierdź</button>
                 </div>
             </form>
         </div>

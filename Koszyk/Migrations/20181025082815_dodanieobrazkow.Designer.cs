@@ -3,14 +3,16 @@ using Koszyk.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Koszyk.Migrations
 {
     [DbContext(typeof(KoszykContext))]
-    partial class KoszykContextModelSnapshot : ModelSnapshot
+    [Migration("20181025082815_dodanieobrazkow")]
+    partial class dodanieobrazkow
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,10 +36,9 @@ namespace Koszyk.Migrations
                     b.Property<string>("nazwa")
                         .IsRequired();
 
-                    b.Property<string>("nazwaProducenta")
-                        .IsRequired();
+                    b.Property<string>("nazwaObrazka");
 
-                    b.Property<string>("urlZdjecia")
+                    b.Property<string>("nazwaProducenta")
                         .IsRequired();
 
                     b.HasKey("id");

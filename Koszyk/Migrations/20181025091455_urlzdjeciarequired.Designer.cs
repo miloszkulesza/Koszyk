@@ -3,14 +3,16 @@ using Koszyk.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Koszyk.Migrations
 {
     [DbContext(typeof(KoszykContext))]
-    partial class KoszykContextModelSnapshot : ModelSnapshot
+    [Migration("20181025091455_urlzdjeciarequired")]
+    partial class urlzdjeciarequired
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
