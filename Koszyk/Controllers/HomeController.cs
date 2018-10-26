@@ -15,11 +15,6 @@ namespace Koszyk.Controllers
             return View();
         }
 
-        public IActionResult twojKoszyk()
-        {
-            return View();
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

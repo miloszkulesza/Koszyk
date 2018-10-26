@@ -22,7 +22,7 @@
             <div class="thumbnail col-xs-12 col-md-3">
                 <img src="@element.urlZdjecia" />
                 @element.nazwa @element.cenaNetto PLN<br />
-                <button class="btn btn-primary">Do koszyka</button>
+                <a class="btn btn-primary" href="@Url.Action("DodajDoKoszyka", "Koszyk", new { id = element.id })">Do koszyka</a>
                 <a class="btn btn-default" href="@Url.Action("szczegoly", "Produkt", new { id = element.id })">Szczególy</a>
             </div>
         }
