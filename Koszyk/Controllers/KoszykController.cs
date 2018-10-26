@@ -105,12 +105,5 @@ namespace Koszyk.Controllers
             int ilosc = koszyk.Count();
             return ilosc;
         }
-
-        public void PustyKoszyk()
-        {
-            SessionHelper.SetObjectAsJson(HttpContext.Session, Consts.KoszykSessionKey, null);
-        }
-
-
     }
 }
