@@ -15,7 +15,7 @@
             Ilość: @Model.ilosc szt<br /><br />
             Producent: @Model.nazwaProducenta <br /><br />
             @Model.adresProducenta<br /><br />
-            <button class="btn btn-primary">Do koszyka</button>
+            <a href="@Url.Action("DodajDoKoszyka", "Koszyk", new { id = Model.id })" class="btn btn-primary">Do koszyka</a>
         </div>
     </div>
 </div>
