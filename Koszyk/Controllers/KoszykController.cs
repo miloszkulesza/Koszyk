@@ -37,7 +37,10 @@ namespace Koszyk.Controllers
             var pozycjaKoszyka = koszyk.Find(k => k.produkt.id == id);
 
             if (pozycjaKoszyka != null)
+            {
                 pozycjaKoszyka.ilosc++;
+                pozycjaKoszyka.wartosc += pozycjaKoszyka.produkt.cenaBrutto();
+            }
             else
             {
                 var produktDoDodania = db.produkty.Where(k => k.id == id).SingleOrDefault();
