@@ -38,6 +38,10 @@ namespace Koszyk.Controllers
 
             if (pozycjaKoszyka != null)
             {
+                if(pozycjaKoszyka.ilosc == pozycjaKoszyka.produkt.ilosc)
+                {
+                    return RedirectToAction("bladIlosc");
+                }
                 pozycjaKoszyka.ilosc++;
                 pozycjaKoszyka.wartosc += pozycjaKoszyka.produkt.cenaBrutto();
             }
@@ -94,6 +98,11 @@ namespace Koszyk.Controllers
             }
             SessionHelper.SetObjectAsJson(HttpContext.Session, Consts.KoszykSessionKey, koszyk);
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult bladIlosc()
+        {
+            return View();
         }
 
         public decimal WartoscKoszyka()
