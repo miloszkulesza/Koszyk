@@ -82,7 +82,7 @@ namespace Koszyk.Controllers
                 if (pozycjaKoszyka.ilosc > 1)
                 {
                     pozycjaKoszyka.ilosc--;
-                    return RedirectToAction(nameof(Index));
+                    pozycjaKoszyka.wartosc -= pozycjaKoszyka.produkt.cenaBrutto();
                 }
                 else
                 {
@@ -102,7 +102,11 @@ namespace Koszyk.Controllers
         public int IloscPozycjiKoszyka()
         {
             var koszyk = PobierzKoszyk();
-            int ilosc = koszyk.Count();
+            int ilosc = 0;
+            foreach(var element in koszyk)
+            {
+                ilosc += element.ilosc;
+            }
             return ilosc;
         }
     }
