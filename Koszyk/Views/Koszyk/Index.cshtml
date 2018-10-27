@@ -20,8 +20,7 @@
                 <ul class="list-group">
                     @foreach (var pozycja in Model.zawartoscKoszyka)
                     {
-                        <li class="list-group-item">@pozycja.produkt.nazwa @pozycja.ilosc szt. @pozycja.wartosc PLN <a class="btn btn-danger" href="@Url.Action("UsunZKoszyka", "Koszyk", new { id = pozycja.produkt.id })">Usuń</a></li>
-                    }
+                        <li class="list-group-item">@pozycja.produkt.nazwa @pozycja.ilosc szt. @pozycja.wartosc PLN <a class="btn btn-danger" href="@Url.Action("UsunZKoszyka", "Koszyk", new { id = pozycja.produkt.id })">Usuń</a></li>                    }
                 </ul>
                 <h4>Ilość produktów w koszyku: @Model.zawartoscKoszyka.Count()</h4>
                 <h4>Całkowita wartość koszyka (z VAT): @Model.wartoscCalkowita</h4>
