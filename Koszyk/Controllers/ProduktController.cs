@@ -103,7 +103,7 @@ namespace Koszyk.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProduktExists(produkt.id))
+                    if (!await ProduktExists(produkt.id))
                     {
                         return NotFound();
                     }
@@ -117,9 +117,9 @@ namespace Koszyk.Controllers
             return View(produkt);
         }
 
-        private bool ProduktExists(int id)
+        private async Task<bool> ProduktExists(int id)
         {
-            return  db.produkty.Any(e => e.id == id);
+            return await db.produkty.AnyAsync(e => e.id == id);
         }
     }
 }
