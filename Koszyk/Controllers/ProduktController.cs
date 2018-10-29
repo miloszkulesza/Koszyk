@@ -53,9 +53,9 @@ namespace Koszyk.Controllers
             return View(await db.produkty.ToListAsync());
         }
 
-        public IActionResult szczegoly(int id)
+        public async Task<IActionResult> szczegoly(int id)
         {
-            return View(db.produkty.Find(id));
+            return View(await db.produkty.FindAsync(id));
         }
 
         public async Task<IActionResult> usun(int? id)
@@ -65,7 +65,7 @@ namespace Koszyk.Controllers
                 return NotFound();
             }
 
-            db.produkty.Remove(db.produkty.Find(id));
+            db.produkty.Remove(await db.produkty.FindAsync(id));
             await db.SaveChangesAsync();
             return RedirectToAction(nameof(zarzadzajProduktami));
         }
@@ -119,7 +119,7 @@ namespace Koszyk.Controllers
 
         private bool ProduktExists(int id)
         {
-            return db.produkty.Any(e => e.id == id);
+            return  db.produkty.Any(e => e.id == id);
         }
     }
 }
