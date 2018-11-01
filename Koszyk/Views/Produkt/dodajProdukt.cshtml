@@ -33,7 +33,8 @@
                 </div>
                 <div class="form-group">
                     <label>URL zdjęcia</label>
-                    <input type="url" asp-for="urlZdjecia" required/>
+                    <input type="url" asp-for="urlZdjecia" />
+                    <span asp-validation-for="urlZdjecia" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label>Ilość</label>

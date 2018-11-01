@@ -29,7 +29,7 @@ namespace Koszyk.Models
         [Required(ErrorMessage = "Podaj ilość sztuk")]
         [RegularExpression(@"^\d$", ErrorMessage = "Podaj właściwą ilość sztuk")]
         public int ilosc { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Podaj adres URL zdjęcia produktu")]
         public string urlZdjecia { get; set; }
     }
 }
