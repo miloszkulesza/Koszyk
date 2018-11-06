@@ -3,19 +3,20 @@
     ViewData["Title"] = "Szczegóły";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="page-header">
-            <h1>Koszyk <small>@ViewBag.Title</small></h1>
-        </div>
-        <div class="col-xs-12 col-md-6">
-            <img src="@Model.urlZdjecia" class="img-thumbnail"/>
-            <h1>@Model.nazwa</h1>
-            <h2>@Model.cenaNetto PLN</h2><br /><br />
-            Ilość: @Model.ilosc szt<br /><br />
-            Producent: @Model.nazwaProducenta <br /><br />
-            @Model.adresProducenta<br /><br />
-            <a href="@Url.Action("DodajDoKoszyka", "Koszyk", new { id = Model.id })" class="btn btn-primary">Do koszyka</a>
-        </div>
+<div class="row">
+    <div class="col">
+        <h1>Koszyk <small>@ViewBag.Title</small></h1>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-6">
+        <img src="@Model.urlZdjecia" class="img-fluid img-thumbnail" />
+        <h1>@Model.nazwa</h1>
+        <h2>@Model.cenaNetto PLN</h2><br /><br />
+        Ilość: @Model.ilosc szt<br /><br />
+        Producent: @Model.nazwaProducenta <br /><br />
+        @Model.adresProducenta<br /><br />
+        <a href="@Url.Action("DodajDoKoszyka", "Koszyk", new { id = Model.id })" class="btn btn-primary">Do koszyka</a>
     </div>
 </div>

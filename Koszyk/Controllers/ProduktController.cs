@@ -20,22 +20,52 @@ namespace Koszyk.Controllers
             db = context;
         }
 
-        public IActionResult dodajProdukt()
+        public async Task<IActionResult> dodajProdukt(int? id)
         {
-            return View();
+            Produkt produkt;
+            if (id.HasValue)
+            {
+                ViewBag.EditMode = true;
+                produkt = await db.produkty.FindAsync(id);
+            }
+            else
+            {
+                ViewBag.EditMode = false;
+                produkt = new Produkt();
+            }
+            return View(produkt);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> dodajProdukt(Produkt produkt)
         {
-            if (ModelState.IsValid)
+            if (produkt.id > 0)
             {
-                db.Add(produkt);
-                await db.SaveChangesAsync();
-                return RedirectToAction(nameof(produkty));
+                if (ModelState.IsValid)
+                {
+                    db.produkty.Update(produkt);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction(nameof(produkty));
+                }
+                else
+                {
+                    return View(produkt);
+                }
             }
-            return View(produkt);
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.produkty.Add(produkt);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction(nameof(produkty));
+                }
+                else
+                {
+                    return View(produkt);
+                }
+            }
         }
 
         public IActionResult zarzadzanie()
@@ -68,58 +98,6 @@ namespace Koszyk.Controllers
             db.produkty.Remove(await db.produkty.FindAsync(id));
             await db.SaveChangesAsync();
             return RedirectToAction(nameof(zarzadzajProduktami));
-        }
-
-        public async Task<IActionResult> edytuj(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var produkt = await db.produkty.FindAsync(id);
-            if (produkt == null)
-            {
-                return NotFound();
-            }
-            return View(produkt);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> edytuj(int id, Produkt produkt)
-        {
-            if (id != produkt.id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    db.Update(produkt);
-                    await db.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!await ProduktExists(produkt.id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(zarzadzajProduktami));
-            }
-            return View(produkt);
-        }
-
-        private async Task<bool> ProduktExists(int id)
-        {
-            return await db.produkty.AnyAsync(e => e.id == id);
         }
     }
 }

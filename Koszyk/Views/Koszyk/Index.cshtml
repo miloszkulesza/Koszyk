@@ -3,27 +3,30 @@
     ViewData["Title"] = "Twój koszyk";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="page-header">
-            <h1>Koszyk <small>@ViewBag.Title</small></h1>
-        </div>
-        @if (Model.zawartoscKoszyka.Count() == 0)
-        {
-            <div class="alert alert-danger">
-                Twój koszyk jest pusty
-            </div>
-        }
-        else
-        {
-            <div class="col-xs-12 col-md-5">
-                <ul class="list-group">
-                    @foreach (var pozycja in Model.zawartoscKoszyka)
-                    {
-                        <li class="list-group-item">@pozycja.produkt.nazwa @pozycja.ilosc szt. @pozycja.wartosc PLN <a class="btn btn-danger" href="@Url.Action("UsunZKoszyka", "Koszyk", new { id = pozycja.produkt.id })">Usuń</a></li>                    }
-                </ul>
-                <h4>Całkowita wartość koszyka (z VAT): @Model.wartoscCalkowita</h4>
-            </div>
-        }
+<div class="row">
+    <div class="col">
+        <h1>Koszyk <small>@ViewBag.Title</small></h1>
+        <hr />
     </div>
 </div>
+@if (Model.zawartoscKoszyka.Count() == 0)
+{
+    <div class="row">
+        <div class="alert alert-danger">
+            Twój koszyk jest pusty
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-xs-12 col-md-5">
+            <ul class="list-group">
+                @foreach (var pozycja in Model.zawartoscKoszyka)
+                {
+                    <li class="list-group-item">@pozycja.produkt.nazwa @pozycja.ilosc szt. @pozycja.wartosc PLN <a class="btn btn-danger float-right" href="@Url.Action("UsunZKoszyka", "Koszyk", new { id = pozycja.produkt.id })">Usuń</a></li>}
+            </ul>
+            <h4>Całkowita wartość koszyka (z VAT): @Model.wartoscCalkowita</h4>
+        </div>
+    </div>
+}
