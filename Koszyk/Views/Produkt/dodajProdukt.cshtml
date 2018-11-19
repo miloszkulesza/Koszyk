@@ -1,0 +1,52 @@
+﻿@model Koszyk.Models.Produkt;
+@{
+    ViewData["Title"] = "Dodaj produkt";
+}
+
+<div class="row">
+    <div class="col">
+        <h1>Koszyk <small>@ViewBag.Title</small></h1>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-4">
+        <form class="was-validated" asp-controller="Produkt" asp-action="dodajProdukt" method="post" novalidate>
+            <div class="form-row form-group">
+                <label>Nazwa produktu</label>
+                <input type="text" class="form-control" asp-for="nazwa" required/>
+                <div class="invalid-feedback"><span asp-validation-for="nazwa"></span></div>
+            </div>
+            <div class="form-row form-group">
+                <label>Cena</label>
+                <input type="text" class="form-control" asp-for="cenaNetto" required/>
+                <div class="invalid-feedback"><span asp-validation-for="cenaNetto"></span></div>
+            </div>
+            <div class="form-row form-group">
+                <label>Producent</label>
+                <input type="text" class="form-control" asp-for="nazwaProducenta" required/>
+                <div class="invalid-feedback"><span asp-validation-for="nazwaProducenta"></span></div>
+            </div>
+            <div class="form-row form-group">
+                <label>Adres producenta</label>
+                <input type="text" class="form-control" asp-for="adresProducenta" required/>
+                <div class="invalid-feedback"><span asp-validation-for="adresProducenta"></span></div>
+            </div>
+            <div class="form-row form-group">
+                <label>URL zdjęcia</label>
+                <input type="url" asp-for="urlZdjecia" class="form-control" required/>
+                <div class="invalid-feedback"><span asp-validation-for="urlZdjecia"></span></div>
+            </div>
+            <div class="form-row form-group">
+                <div class="col-md-4">
+                    <label>Ilość</label>
+                    <input type="number" class="form-control" asp-for="ilosc" required/>
+                    <div class="invalid-feedback"><span asp-validation-for="ilosc"></span></div>
+                </div>
+            </div>
+            <div class="form-row">
+                <button type="submit" class="btn btn-success">Dodaj</button> <button type="reset" class="btn btn-danger">Wyczyść</button>
+            </div>
+        </form>
+    </div>
+</div>

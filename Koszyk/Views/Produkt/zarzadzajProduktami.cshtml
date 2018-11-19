@@ -1,0 +1,34 @@
+﻿@model List<Koszyk.Models.Produkt>;
+@{
+    ViewData["Title"] = "Zarządzaj produktami";
+}
+
+<div class="row">
+    <div class="col">
+        <h1>Koszyk <small>@ViewBag.Title</small></h1>
+        <hr />
+    </div>
+</div>
+@if (Model.Count == 0)
+{
+    <div class="row">
+        <div class="alert alert-danger">
+            Lista produktów jest pusta
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        @foreach (var element in Model)
+        {
+            <div class="col-md-3 col-xs-12 thumbnail">
+                <img src="@element.urlZdjecia" class="img-fluid img-thumbnail"/>
+                <h3>@element.nazwa</h3>
+                @element.cenaNetto PLN<br />
+                <a href="@Url.Action("dodajProdukt", "Produkt", new { id = element.id })" class="btn btn-primary">Edytuj</a>
+                <a href="@Url.Action("usun", "Produkt", new { id = element.id })" class="btn btn-danger">Usuń</a>
+            </div>
+        }
+    </div>
+}
