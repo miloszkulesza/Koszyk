@@ -22,7 +22,7 @@ namespace Koszyk.ViewComponents
                     ilosc += element.ilosc;
                 }
             }
-            var vm = new CartQuantityViewModel
+            var vm = new CartQuantityViewModel()
             {
                 quantity = ilosc
             };
