@@ -21,14 +21,21 @@
 else
 {
     <div class="row">
-        @foreach (var element in Model)
-        {
-            <div class="thumbnail col-xs-12 col-md-3">
-                <img src="@element.urlZdjecia" class="img-fluid img-thumbnail" /><br />
-                @element.nazwa @element.cenaNetto PLN<br />
-                <a class="btn btn-primary" href="@Url.Action("DodajDoKoszyka", "Koszyk", new { id = element.id })">Do koszyka</a>
-                <a class="btn btn-default" href="@Url.Action("szczegoly", "Produkt", new { id = element.id })">Szczególy</a>
-            </div>
-        }
-    </div>
+        <ul class="list-group col-md-12">
+            @foreach (var element in Model)
+            {
+            <li class="list-group-item list-group-item-action">
+                <!-- <div class="thumbnail col-xs-12 col-md-3"> -->
+                <img src="@element.urlZdjecia" class="img-fluid" style="width: auto; height: 100px;"/>
+                @element.nazwa
+                <div class="float-right" style="padding-top: 3%;">
+                    @element.cenaNetto PLN
+                    <a class="btn btn-primary" href="@Url.Action("DodajDoKoszyka", "Koszyk", new { id = element.id })">Do koszyka</a>
+                    <a class="btn btn-default" href="@Url.Action("szczegoly", "Produkt", new { id = element.id })">Szczególy</a>
+                </div>
+                <!-- </div>-->
+            </li>
+            }
+            </ul>
+</div>
 }
